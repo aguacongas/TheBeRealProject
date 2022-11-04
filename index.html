@@ -7,7 +7,7 @@
         let htmlString = '';
         
         for (let file of data) {
-          htmlString += `<a href="${file.path}">${file.name}</a>`;
+          htmlString += `<a href="${file.path}"><img src="${file.path}" /></a>`;
         }
 
         document.getElementsByTagName('body')[0].innerHTML = htmlString;
