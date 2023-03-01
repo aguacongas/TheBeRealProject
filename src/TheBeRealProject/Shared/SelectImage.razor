@@ -16,7 +16,7 @@
 
     private string GetDate() 
     {
-        var s = Assets?[Index]?.Name?.ToUpperInvariant()
+        var s = Assets?[Assets.GetBoundIndex(Index)]?.Name?.ToUpperInvariant()
             .Replace("BEREAL-", string.Empty)
             .Replace("-1200.JPEG", string.Empty);
         if (DateOnly.TryParseExact(s, "yyyy-MM-dd", out DateOnly date)) 

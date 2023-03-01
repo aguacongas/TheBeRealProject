@@ -1,9 +1,9 @@
 ﻿@if (Assets?.Length > 0)
 {
-    <img class="@CssClass" src="@Src" @onmouseover="() => OnMouseOver.InvokeAsync(GetIndex(Index))" />
+    <img class="@CssClass" src="@Src" @onmouseover="() => OnMouseOver.InvokeAsync(Assets.GetBoundIndex(Index))" />
 }
 @code {
-    string? Src => Assets?[GetIndex(Index)].Path;
+    string? Src => Assets?[Assets.GetBoundIndex(Index)].Path;
     [Parameter]
     public GitHubItem[]? Assets { get; set; }
     [Parameter]
@@ -12,17 +12,4 @@
     public string? CssClass { get; set; }
     [Parameter]
     public EventCallback<int> OnMouseOver { get; set; }
-
-    private int GetIndex(int from) 
-    {
-        if(Assets is null || Assets.Length == 0) 
-        {
-            return 0;    
-        }
-        if (from < Assets.Length) 
-        {
-            return from;
-        }
-        return GetIndex(from - Assets.Length);
-    }
 }

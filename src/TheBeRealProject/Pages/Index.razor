@@ -16,7 +16,7 @@
 @code
 {
     GitHubItem[]? Assets { get; set; }
-    int SelectedIndex { get; set; } = 0;
+    int SelectedIndex { get; set; } = new Random().Next(0, 365);
     protected override async Task OnInitializedAsync() {
         using var response = await HttpClient.GetAsync("contents/assets").ConfigureAwait(false);
         response.EnsureSuccessStatusCode();
