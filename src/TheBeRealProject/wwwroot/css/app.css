@@ -17,6 +17,7 @@ tr, td {
     padding: 0;
     line-height: 0;
 }
+
 td img {
     width: 20px;
 }
@@ -112,3 +113,13 @@ td img {
     .loading-progress-text:after {
         content: var(--blazor-load-percentage-text, "Loading");
     }
+
+@media (max-width: 640.98px) {
+    td img {
+        width: 10px;
+    }
+    .selected-img {
+        width: 250px;
+        height: auto;
+    }
+}
