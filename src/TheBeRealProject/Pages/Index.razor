@@ -4,6 +4,7 @@
 <PageTitle>The BeReal Project</PageTitle>
 
 <h1>The <a href="https://bereal.com/">BeReal</a> Project</h1>
+
 <div class="row">
     <div class="col mb-3">
         <ImageGrid Assets="@Assets" OnMouseOver="MouseOver"></ImageGrid>
@@ -12,7 +13,6 @@
         <SelectImage Assets="@Assets" Index="SelectedIndex"></SelectImage>
     </div>
 </div>
-
 @code
 {
     GitHubItem[]? Assets { get; set; }
