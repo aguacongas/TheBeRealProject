@@ -1,0 +1,24 @@
+﻿@if (Assets is not null)
+{
+    <table>
+        @for (int i = 0; i < 15; i++)
+        {
+            <tr>
+                @for (int j = 0; j < 25; j++)
+                {
+                    <td><Image Index="@GetIndex(i ,j)" Assets="@Assets" OnMouseOver="index => OnMouseOver.InvokeAsync(index)"></Image></td>
+                }
+            </tr>
+        }
+    </table>
+}
+@code 
+{
+    [Parameter]
+    public GitHubItem[]? Assets { get; set; }
+
+    [Parameter]
+    public EventCallback<int> OnMouseOver { get; set; }
+
+    private static int GetIndex(int i, int j) => (i * 25) + j;
+}

@@ -1,0 +1,33 @@
+﻿@page "/"
+@inject HttpClient HttpClient
+
+<PageTitle>Index</PageTitle>
+
+<h1>The <a href="https://bereal.com/">BeReal</a> Project</h1>
+
+<div class="row">
+    <div class="col">
+        <ImageGrid Assets="@Assets" OnMouseOver="MouseOver"></ImageGrid>
+    </div>
+    <div class="col">
+        <Image CssClass="selected-img" Assets="@Assets" Index="SelectedIndex"></Image>
+    </div>
+</div>
+
+@code
+{
+    GitHubItem[]? Assets { get; set; }
+    int SelectedIndex { get; set; } = 0;
+    protected override async Task OnInitializedAsync() {
+        using var response = await HttpClient.GetAsync("contents/assets").ConfigureAwait(false);
+        response.EnsureSuccessStatusCode();
+        Assets = await response.Content.ReadFromJsonAsync<GitHubItem[]>().ConfigureAwait(false);
+        await base.OnInitializedAsync().ConfigureAwait(false);
+    }
+
+    void MouseOver(int index) 
+    {
+        SelectedIndex = index;
+        StateHasChanged();
+    }
+}

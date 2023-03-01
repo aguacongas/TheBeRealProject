@@ -1,0 +1,132 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="assets\bereal-2022-10-12-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-13-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-14-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-15-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-16-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-17-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-18-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-19-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-20-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-21-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-22-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-23-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-24-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-25-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-26-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-27-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-28-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-29-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-30-1200.JPEG" />
+    <Content Include="assets\bereal-2022-10-31-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-01-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-02-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-03-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-04-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-05-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-06-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-07-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-08-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-09-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-10-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-11-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-12-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-13-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-14-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-15-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-16-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-17-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-18-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-19-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-20-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-21-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-22-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-23-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-24-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-25-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-26-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-27-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-28-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-29-1200.JPEG" />
+    <Content Include="assets\bereal-2022-11-30-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-01-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-02-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-03-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-04-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-05-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-06-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-07-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-08-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-09-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-10-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-11-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-12-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-13-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-14-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-15-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-16-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-17-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-18-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-19-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-20-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-21-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-22-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-23-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-24-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-25-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-26-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-27-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-28-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-29-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-30-1200.JPEG" />
+    <Content Include="assets\bereal-2022-12-31-1200.JPEG" />
+    <Content Include="assets\bereal-2023-01-01-1200.JPEG" />
+    <Content Include="assets\bereal-2023-01-02-1200.JPEG" />
+    <Content Include="assets\bereal-2023-01-03-1200.JPEG" />
+    <Content Include="assets\bereal-2023-01-04-1200.JPEG" />
+    <Content Include="assets\bereal-2023-01-05-1200.JPEG" />
+    <Content Include="assets\bereal-2023-01-07-1200.JPEG" />
+    <Content Include="assets\bereal-2023-01-08-1200.JPEG" />
+    <Content Include="assets\bereal-2023-01-09-1200.JPEG" />
+    <Content Include="assets\bereal-2023-01-10-1200.JPEG" />
+    <Content Include="assets\bereal-2023-01-11-1200.JPEG" />
+    <Content Include="assets\bereal-2023-01-12-1200.JPEG" />
+    <Content Include="assets\bereal-2023-01-13-1200.JPEG" />
+    <Content Include="assets\bereal-2023-01-14-1200.JPEG" />
+    <Content Include="assets\bereal-2023-01-15-1200.JPEG" />
+    <Content Include="assets\bereal-2023-01-16-1200.JPEG" />
+    <Content Include="assets\bereal-2023-02-13-1200.jpeg" />
+    <Content Include="assets\bereal-2023-02-14-1200.jpeg" />
+    <Content Include="assets\bereal-2023-02-15-1200.jpeg" />
+    <Content Include="assets\bereal-2023-02-16-1200.jpeg" />
+    <Content Include="assets\bereal-2023-02-17-1200.jpeg" />
+    <Content Include="assets\bereal-2023-02-18-1200.jpeg" />
+    <Content Include="assets\bereal-2023-02-19-1200.jpeg" />
+    <Content Include="assets\bereal-2023-02-20-1200.jpeg" />
+    <Content Include="assets\bereal-2023-02-21-1200.jpeg" />
+    <Content Include="assets\bereal-2023-02-22-1200.jpeg" />
+    <Content Include="assets\bereal-2023-02-24-1200.jpeg" />
+    <Content Include="assets\bereal-2023-02-25-1200.jpeg" />
+    <Content Include="assets\bereal-2023-02-26-1200.jpeg" />
+    <Content Include="assets\bereal-2023-02-27-1200.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+  </ItemGroup>
+
+</Project>
