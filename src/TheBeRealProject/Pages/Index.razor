@@ -1,16 +1,15 @@
 ﻿@page "/"
 @inject HttpClient HttpClient
 
-<PageTitle>Index</PageTitle>
+<PageTitle>The BeReal Project</PageTitle>
 
 <h1>The <a href="https://bereal.com/">BeReal</a> Project</h1>
-
 <div class="row">
     <div class="col mb-3">
         <ImageGrid Assets="@Assets" OnMouseOver="MouseOver"></ImageGrid>
     </div>
-    <div class="col">
-        <Image CssClass="selected-img" Assets="@Assets" Index="SelectedIndex"></Image>
+    <div class="col-6">
+        <SelectImage Assets="@Assets" Index="SelectedIndex"></SelectImage>
     </div>
 </div>
 

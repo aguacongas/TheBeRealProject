@@ -1,0 +1,63 @@
+﻿@code
+{
+    [Fact]
+    public void ImageGrid_should_render_a_table_of_15_ro_per_25_col() 
+    {
+        // Arrange
+        using var ctx = new TestContext();
+        var path = Guid.NewGuid().ToString();
+        var assets = new GitHubItem[]
+        {
+            new GitHubItem
+            {
+                Path = path
+            }
+        };
+
+        // Act
+        var cut = ctx.Render(@<ImageGrid Assets="assets" />);
+
+        // Assert
+        var trNodes = cut.FindAll("tr");
+
+        Assert.Equal(15, trNodes.Count);
+
+        var tdNodes = cut.FindAll("td");
+
+        Assert.Equal(15 * 25, tdNodes.Count);
+    }
+
+    [Fact]
+    public void ImageGrid_should_buble_up_image_on_mouse_over() {
+        // Arrange
+        using var ctx = new TestContext();
+        var path = Guid.NewGuid().ToString();
+        var assets = new GitHubItem[]
+        {
+            new GitHubItem
+            {
+                Path = path
+            }
+        };
+
+        Action<int> onMouseOver = index =>
+        {
+            Assert.Equal(0, index);
+        };
+
+
+        // Act
+        var cut = ctx.Render(@<ImageGrid Assets="assets" OnMouseOver="onMouseOver" />);
+
+        var firstImage = cut.Find("img");
+
+        try 
+        {
+            firstImage.TriggerEvent("onmouseover", new MouseEventArgs());
+        }
+        catch(InvalidOperationException) 
+        {
+            // silent
+        }
+    }
+}

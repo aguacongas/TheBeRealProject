@@ -1,0 +1,47 @@
+﻿@code
+{
+    [Fact]
+    public void Image_should_not_render_when_assets_is_null() {
+        // Arrange
+        using var ctx = new TestContext();
+
+        // Act
+        var cut = ctx.Render(@<Image  />);
+
+        // Assert
+        cut.MarkupMatches(string.Empty);
+    }
+
+    [Fact]
+    public void Image_should_not_render_when_assets_is_empty() {
+        // Arrange
+        using var ctx = new TestContext();
+        var assets = Array.Empty<GitHubItem>();
+
+        // Act
+        var cut = ctx.Render(@<Image Assets="assets" Index="0" />);
+
+        // Assert
+        cut.MarkupMatches(string.Empty);
+    }
+
+    [Fact]
+    public void Image_should_render_image_source_even_on_outbound_index() {
+        // Arrange
+        using var ctx = new TestContext();
+        var path = Guid.NewGuid().ToString();
+        var assets = new GitHubItem[]
+        {
+            new GitHubItem
+            {
+                Path = path
+            }
+        };
+
+        // Act
+        var cut = ctx.Render(@<Image Assets="assets" Index="1" />);
+
+        // Assert
+        cut.MarkupMatches(@<img src="@path" />);
+    }
+}

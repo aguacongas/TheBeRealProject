@@ -1,0 +1,32 @@
+﻿@using RichardSzalay.MockHttp;
+@code 
+{
+    [Fact]
+    public void Index_should_render_grid_and_selected_image() 
+    {
+        // Arrange
+        using var ctx = new TestContext();
+        var mock = ctx.Services.AddMockHttpClient();
+
+        var path = Guid.NewGuid().ToString();
+        var assets = new GitHubItem[]
+        {
+            new GitHubItem
+            {
+                Path = path
+            }
+        };
+
+        mock.When("contents/assets").RespondJson(assets);
+        // Act
+        var cut = ctx.Render(@<Index />);
+
+        var grid = cut.FindComponent<ImageGrid>();
+
+        Assert.NotNull(grid);
+
+        var selectedImage = cut.FindComponent<SelectImage>();
+
+        Assert.NotNull(selectedImage);
+    }
+}

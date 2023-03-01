@@ -22,7 +22,7 @@ td img {
     width: 20px;
 }
 
-.selected-img {
+.selected-img img {
     height: 400px
 }
 
@@ -118,8 +118,14 @@ td img {
     td img {
         width: 10px;
     }
-    .selected-img {
+
+    .selected-img img {
         width: 250px;
         height: auto;
+    }
+}
+@media (min-width: 1096px) {
+    .selected-img {
+        margin-top: -46.4px;
     }
 }

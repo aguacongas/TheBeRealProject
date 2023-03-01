@@ -1,4 +1,4 @@
-﻿@if (Src is not null)
+﻿@if (Assets?.Length > 0)
 {
     <img class="@CssClass" src="@Src" @onmouseover="() => OnMouseOver.InvokeAsync(GetIndex(Index))" />
 }
@@ -15,7 +15,7 @@
 
     private int GetIndex(int from) 
     {
-        if(Assets is null) 
+        if(Assets is null || Assets.Length == 0) 
         {
             return 0;    
         }
