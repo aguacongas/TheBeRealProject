@@ -17,7 +17,7 @@
             }
         };
 
-        mock.When("contents/assets").RespondJson(assets);
+        mock.When("/contents/assets").RespondJson(assets);
         // Act
         var cut = ctx.Render(@<Index />);
 
