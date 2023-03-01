@@ -44,7 +44,7 @@ jobs:
           html_path: ${{ env.PUBLISH_DIR }}/index.html
           base_href: /TheBeRealProject/      
       - name: Copy assets
-        run: cp -r assets ${{ env.PUBLISH_DIR }}/wwwroot/assets 
+        run: cp -r assets ${{ env.PUBLISH_DIR }}/assets 
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
