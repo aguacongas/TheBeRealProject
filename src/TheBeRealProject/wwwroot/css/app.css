@@ -133,7 +133,7 @@ td img {
     @media (min-width: 767px) {
         .selected-img img {
             width: auto;
-            max-height: 294px;
+            max-height: 306px;
         }
     }
     
