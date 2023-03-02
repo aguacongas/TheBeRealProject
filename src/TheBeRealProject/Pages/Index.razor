@@ -17,8 +17,8 @@
     </div>
     <div class="ms-md-3 mb-5">
         <div class="row">
-            <div class="col-md" @onmouseout="e => SelectedIndex = null">
-                <ImageGrid Assets="@Assets" OnMouseOver="MouseOver"></ImageGrid>
+            <div class="col-md" @onmouseout="HandleOnMouseOut">
+                <ImageGrid Assets="@Assets" OnMouseOver="HandleMouseOver" OnClick="HandleClick"></ImageGrid>
             </div>
             <div class="col-md">
                 <SelectedImage Assets="@Assets" SelectedIndex="SelectedIndex"></SelectedImage>
@@ -31,15 +31,33 @@
     GitHubItem[]? Assets { get; set; }
     int? SelectedIndex { get; set; }
 
-    protected override async Task OnInitializedAsync() {
+    bool UpdateSelectedIndexOnMouseOver = true;
+    protected override async Task OnInitializedAsync() 
+    {
         using var response = await HttpClient.GetAsync("contents/assets").ConfigureAwait(false);
         response.EnsureSuccessStatusCode();
         Assets = await response.Content.ReadFromJsonAsync<GitHubItem[]>().ConfigureAwait(false);
         await base.OnInitializedAsync().ConfigureAwait(false);
     }
 
-    void MouseOver(int index) {
-        SelectedIndex = index;
-        StateHasChanged();
+    void HandleMouseOver(int index) 
+    {
+        if (UpdateSelectedIndexOnMouseOver) 
+        {
+            SelectedIndex = index;
+        }
+    }
+
+    void HandleClick(int index) 
+    {
+        UpdateSelectedIndexOnMouseOver = !UpdateSelectedIndexOnMouseOver;
+    }
+
+    void HandleOnMouseOut()
+    {
+        if (UpdateSelectedIndexOnMouseOver) 
+        {
+            SelectedIndex = null;
+        }
     }
 }

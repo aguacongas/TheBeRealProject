@@ -1,6 +1,8 @@
 ﻿@if (Assets?.Length > 0)
 {
-    <img class="@CssClass" src="@Src" @onmouseover="() => OnMouseOver.InvokeAsync(Assets.GetBoundIndex(Index))" />
+    <img class="@CssClass" src="@Src" 
+        @onmouseover="() => OnMouseOver.InvokeAsync(Assets.GetBoundIndex(Index))"
+        @onclick="() => OnClick.InvokeAsync(Assets.GetBoundIndex(Index))" />
 }
 @code {
     string? Src => Assets?[Assets.GetBoundIndex(Index)].Path;
@@ -12,4 +14,6 @@
     public string? CssClass { get; set; }
     [Parameter]
     public EventCallback<int> OnMouseOver { get; set; }
+    [Parameter]
+    public EventCallback<int> OnClick { get; set; }
 }

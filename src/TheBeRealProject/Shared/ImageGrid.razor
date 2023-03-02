@@ -6,7 +6,11 @@
             <tr>
                 @for (int j = 0; j < 25; j++)
                 {
-                    <td><Image Index="@GetIndex(i ,j)" Assets="@Assets" OnMouseOver="index => OnMouseOver.InvokeAsync(index)"></Image></td>
+                    <td>
+                        <Image Index="@GetIndex(i ,j)" Assets="@Assets" 
+                            OnMouseOver="index => OnMouseOver.InvokeAsync(index)"
+                            OnClick="index => OnClick.InvokeAsync(index)"></Image>
+                    </td>
                 }
             </tr>
         }
@@ -19,6 +23,9 @@
 
     [Parameter]
     public EventCallback<int> OnMouseOver { get; set; }
+
+    [Parameter]
+    public EventCallback<int> OnClick { get; set; }
 
     private static int GetIndex(int i, int j) => (i * 25) + j;
 }
