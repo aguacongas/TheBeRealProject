@@ -118,22 +118,24 @@ td img {
         content: var(--blazor-load-percentage-text, "Loading");
     }
 
+img.github-mark {
+    width: 20px;
+}
 
-    @media (max-width: 767px) {
-        .selected-img {
-            text-align: center;
-        }
-
-        .selected-img img {
-            width: 100%;
-            height: auto;
-        }
+@media (max-width: 767px) {
+    .selected-img {
+        text-align: center;
     }
 
-    @media (min-width: 767px) {
-        .selected-img img {
-            width: auto;
-            max-height: 306px;
-        }
+    .selected-img img {
+        width: 100%;
+        height: auto;
     }
-    
+}
+
+@media (min-width: 767px) {
+    .selected-img img {
+        width: auto;
+        max-height: 312px;
+    }
+}

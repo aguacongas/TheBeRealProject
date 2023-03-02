@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using System.Net.Http.Headers;
 using TheBeRealProject;
+using TheBeRealProject.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -11,6 +11,7 @@ var apiUrl = builder.Configuration.GetValue<string>("ApiUrl") ?? throw new Inval
 builder.Services.AddScoped(sp =>  new HttpClient 
     {
         BaseAddress = new Uri(apiUrl),
-    });
+    })
+    .AddScoped<ThemeService>();
 
 await builder.Build().RunAsync();
