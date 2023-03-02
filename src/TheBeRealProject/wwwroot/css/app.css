@@ -132,8 +132,4 @@ td img {
         height: auto;
     }
 }
-@media (min-width: 1096px) {
-    .selected-img {
-        margin-top: -46.4px;
-    }
-}
+
