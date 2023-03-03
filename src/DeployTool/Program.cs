@@ -50,6 +50,7 @@ for (int i = 0; i < data.Length; i++)
     var dateString = item.Name?.ToUpperInvariant()
             .Replace("BEREAL-", string.Empty)
             .Replace("-1200.JPEG", string.Empty);
+
     if (!DateOnly.TryParseExact(dateString, "yyyy-MM-dd", out DateOnly date))
     {
         continue;
