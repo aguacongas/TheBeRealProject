@@ -13,7 +13,8 @@ using TheBeRealProject.Models;
 var builder = Host.CreateApplicationBuilder(args);
 var configuration = builder.Configuration.AddUserSecrets<Program>().Build();
 
-builder.Services.AddScoped(sp => {
+builder.Services.AddScoped(sp =>
+{
     var client = new HttpClient();
     client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("TheBeRealProject.DeployTool", "1.0.0"));
 
@@ -33,7 +34,7 @@ if (!Directory.Exists(assetDir))
 {
     Directory.CreateDirectory(assetDir);
 }
-foreach(var file in Directory.GetFiles(assetDir))
+foreach (var file in Directory.GetFiles(assetDir))
 {
     File.Delete(file);
 }
@@ -43,31 +44,33 @@ var apiUrl = configuration.GetValue<string>("ApiUrl") ?? throw new InvalidOperat
 var data = await httpClient.GetFromJsonAsync<GitHubItem[]>(apiUrl).ConfigureAwait(false) ?? throw new InvalidOperationException("data is null");
 
 var assets = new Collection<AssetItem>();
-for (int i = 0; i < data.Length; i++) 
+for (int i = 0; i < data.Length; i++)
 {
     var item = data[i];
     var dateString = item.Name?.ToUpperInvariant()
             .Replace("BEREAL-", string.Empty)
             .Replace("-1200.JPEG", string.Empty);
-    if (!DateOnly.TryParseExact(dateString, "yyyy-MM-dd", out DateOnly date)) {
+    if (!DateOnly.TryParseExact(dateString, "yyyy-MM-dd", out DateOnly date))
+    {
         continue;
     }
 
-    if (item.Name is null) {
+    if (item.Name is null)
+    {
         continue;
     }
     var id = Guid.NewGuid();
-    var asset = new AssetItem 
+    var asset = new AssetItem
     {
         Id = id,
         Date = date,
         OriginalUrl = item.DownloadUrl
     };
-    
+
     using var gs = await httpClient.GetStreamAsync(item.DownloadUrl).ConfigureAwait(false);
     using var ms = new MemoryStream();
     await gs.CopyToAsync(ms).ConfigureAwait(false);
-    
+
     ms.Position = 0;
     using var glimpse = ResizeImage(ms, 400);
     glimpse.Save(Path.Combine(publishDir, asset.Path));
@@ -83,7 +86,7 @@ for (int i = 0; i < data.Length; i++)
 using var stream = File.Create(Path.Combine(publishDir, "assets.json"));
 JsonSerializer.Serialize(stream, assets);
 static Image ResizeImage(Stream stream, float size)
-{ 
+{
     using var original = new Bitmap(stream);
 
     var scaleHeight = size / original.Height;
