@@ -63,7 +63,7 @@ for (int i = 0; i < data.Length; i++)
     {
         Id = id,
         Date = date,
-        OriginalUrl = item.Url
+        OriginalUrl = item.DownloadUrl
     };
     
     using var gs = await httpClient.GetStreamAsync(item.DownloadUrl).ConfigureAwait(false);
