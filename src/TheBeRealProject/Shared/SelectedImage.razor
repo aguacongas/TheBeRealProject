@@ -6,29 +6,8 @@
 
 @code 
 {
-    string? Date => GetDate();
-
     [Parameter]
-    public GitHubItem[]? Assets { get; set; }
+    public AssetItem[]? Assets { get; set; }
     [Parameter]
     public int? SelectedIndex { get; set; }
-
-    private string? GetDate() 
-    {
-        if (!SelectedIndex.HasValue)
-        {
-            return null;
-        }
-
-        var s = Assets?[Assets.GetBoundIndex(SelectedIndex.Value)]?.Name?.ToUpperInvariant()
-            .Replace("BEREAL-", string.Empty)
-            .Replace("-1200.JPEG", string.Empty);
-        
-            if (DateOnly.TryParseExact(s, "yyyy-MM-dd", out DateOnly date)) 
-        {
-            return date.ToString();
-        }
-
-        return " ";
-    }
 }

@@ -7,9 +7,9 @@
                 @for (int j = 0; j < 25; j++)
                 {
                     <td>
-                        <Image Index="@GetIndex(i ,j)" Assets="@Assets" 
+                        <MiniImage Index="@GetIndex(i ,j)" Assets="@Assets" 
                             OnMouseOver="index => OnMouseOver.InvokeAsync(index)"
-                            OnClick="index => OnClick.InvokeAsync(index)"></Image>
+                            OnClick="index => OnClick.InvokeAsync(index)"></MiniImage>
                     </td>
                 }
             </tr>
@@ -19,7 +19,7 @@
 @code 
 {
     [Parameter]
-    public GitHubItem[]? Assets { get; set; }
+    public AssetItem[]? Assets { get; set; }
 
     [Parameter]
     public EventCallback<int> OnMouseOver { get; set; }

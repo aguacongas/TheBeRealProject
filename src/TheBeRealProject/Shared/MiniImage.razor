@@ -5,7 +5,7 @@
         @onclick="() => OnClick.InvokeAsync(Assets.GetBoundIndex(Index))" />
 }
 @code {
-    string? Src => Assets?[Assets.GetBoundIndex(Index)].Path;
+    string? Src => Assets?[Assets.GetBoundIndex(Index)].MiniPath;
     [Parameter]
     public AssetItem[]? Assets { get; set; }
     [Parameter]

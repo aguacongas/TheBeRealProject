@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{59C5FBF3-2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheBeRealProjectTest", "test\TheBeRealProjectTest\TheBeRealProjectTest.csproj", "{17BF54D2-C507-41B8-B765-1BF95AF82B05}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeployTool", "src\DeployTool\DeployTool.csproj", "{587EB76D-BA23-4A91-9B96-97B9D56629F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{17BF54D2-C507-41B8-B765-1BF95AF82B05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17BF54D2-C507-41B8-B765-1BF95AF82B05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17BF54D2-C507-41B8-B765-1BF95AF82B05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{587EB76D-BA23-4A91-9B96-97B9D56629F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{587EB76D-BA23-4A91-9B96-97B9D56629F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{587EB76D-BA23-4A91-9B96-97B9D56629F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{587EB76D-BA23-4A91-9B96-97B9D56629F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5D86D61E-F660-4D5D-B92D-9CFFD4232B11} = {AE222A78-0A6D-46E5-AF05-41DFF53D6D42}
 		{17BF54D2-C507-41B8-B765-1BF95AF82B05} = {59C5FBF3-2C86-4FF5-8F6F-A4B3211C7C86}
+		{587EB76D-BA23-4A91-9B96-97B9D56629F9} = {AE222A78-0A6D-46E5-AF05-41DFF53D6D42}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CDB46C02-E397-4C27-999D-CE454C1CAD38}

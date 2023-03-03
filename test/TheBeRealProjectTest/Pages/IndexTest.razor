@@ -1,4 +1,6 @@
 ﻿@using RichardSzalay.MockHttp;
+@using TheBeRealProject.Services;
+
 @code 
 {
     [Fact]
@@ -6,7 +8,9 @@
     {
         // Arrange
         using var ctx = new TestContext();
-        var mock = ctx.Services.AddMockHttpClient();
+        var services = ctx.Services;
+        services.AddScoped<ThemeService>();
+        var mock = services.AddMockHttpClient();
 
         var path = Guid.NewGuid().ToString();
         var assets = new GitHubItem[]

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DeployTool": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Projects\\Perso\\TheBeRealProject\\src\\DeployTool"
+    }
+  }
+}

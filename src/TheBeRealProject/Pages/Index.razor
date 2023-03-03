@@ -13,7 +13,7 @@
             </div>
             <div class="col-6">
                 <div class="d-flex">
-                    <div class="ms-2 mt-2">
+                    <div class="ms-2 mt-2 d-none d-md-block">
                         <SelectedTitle Assets="@Assets" SelectedIndex="SelectedIndex"></SelectedTitle>
                     </div>
                     <div class="dropdown ms-auto">
@@ -33,6 +33,9 @@
                 <ImageGrid Assets="@Assets" OnMouseOver="HandleMouseOver" OnClick="HandleClick"></ImageGrid>
             </div>
             <div class="col-md">
+                <div class="d-md-none">
+                    <SelectedTitle Assets="@Assets" SelectedIndex="SelectedIndex"></SelectedTitle>
+                </div>
                 <SelectedImage Assets="@Assets" SelectedIndex="SelectedIndex"></SelectedImage>
             </div>
         </div>
@@ -40,16 +43,14 @@
 </div>
 @code
 {
-    GitHubItem[]? Assets { get; set; }
+    AssetItem[]? Assets { get; set; }
     int? SelectedIndex { get; set; }
     string? Show { get; set; }
 
     bool UpdateSelectedIndexOnMouseOver = true;
     protected override async Task OnInitializedAsync() 
     {
-        using var response = await HttpClient.GetAsync("contents/assets").ConfigureAwait(false);
-        response.EnsureSuccessStatusCode();
-        Assets = await response.Content.ReadFromJsonAsync<GitHubItem[]>().ConfigureAwait(false);
+        Assets = await HttpClient.GetFromJsonAsync<AssetItem[]>("assets.json").ConfigureAwait(false);
         await base.OnInitializedAsync().ConfigureAwait(false);
     }
 
