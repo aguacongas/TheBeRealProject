@@ -5,12 +5,12 @@
     {
         // Arrange
         using var ctx = new TestContext();
-        var path = Guid.NewGuid().ToString();
-        var assets = new GitHubItem[]
+        var id = Guid.NewGuid();
+        var assets = new AssetItem[]
         {
-            new GitHubItem
+            new AssetItem
             {
-                Path = path
+                Id = id
             }
         };
 
@@ -31,12 +31,12 @@
     public void ImageGrid_should_buble_up_image_on_mouse_over() {
         // Arrange
         using var ctx = new TestContext();
-        var path = Guid.NewGuid().ToString();
-        var assets = new GitHubItem[]
+        var id = Guid.NewGuid();
+        var assets = new AssetItem[]
         {
-            new GitHubItem
+            new AssetItem
             {
-                Path = path
+                Id = id
             }
         };
 

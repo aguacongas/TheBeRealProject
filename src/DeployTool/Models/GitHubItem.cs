@@ -1,7 +1,7 @@
 ﻿
 using System.Text.Json.Serialization;
 
-namespace TheBeRealProject.Models;
+namespace DeployTool.Models;
 
 public class GitHubItem 
 {

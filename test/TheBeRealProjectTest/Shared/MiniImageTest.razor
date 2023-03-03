@@ -6,7 +6,7 @@
         using var ctx = new TestContext();
 
         // Act
-        var cut = ctx.Render(@<Image  />);
+        var cut = ctx.Render(@<MiniImage  />);
 
         // Assert
         cut.MarkupMatches(string.Empty);
@@ -19,7 +19,7 @@
         var assets = Array.Empty<AssetItem>();
 
         // Act
-        var cut = ctx.Render(@<Image Assets="assets" Index="0" />);
+        var cut = ctx.Render(@<MiniImage Assets="assets" Index="0" />);
 
         // Assert
         cut.MarkupMatches(string.Empty);
@@ -40,9 +40,9 @@
         };
 
         // Act
-        var cut = ctx.Render(@<Image Assets="assets" Index="1" />);
+        var cut = ctx.Render(@<MiniImage Assets="assets" Index="1" />);
 
         // Assert
-        cut.MarkupMatches(@<img src="@asset.Path" />);
+        cut.MarkupMatches(@<img src="@asset.MiniPath" />);
     }
 }

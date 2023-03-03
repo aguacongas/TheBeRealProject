@@ -1,5 +1,5 @@
 ﻿
-namespace TheBeRealProject.Models;
+namespace DeployTool.Models;
 
 public class GitHubILink 
 {

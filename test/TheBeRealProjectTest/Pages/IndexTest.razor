@@ -12,19 +12,21 @@
         services.AddScoped<ThemeService>();
         var mock = services.AddMockHttpClient();
 
-        var path = Guid.NewGuid().ToString();
-        var assets = new GitHubItem[]
+        var id = Guid.NewGuid();
+        var assets = new AssetItem[]
         {
-            new GitHubItem
+            new AssetItem
             {
-                Path = path
+                Id = id
             }
         };
 
-        mock.When("/contents/assets").RespondJson(assets);
+        mock.When("/assets.json").RespondJson(assets);
         // Act
         var cut = ctx.Render(@<Index />);
 
+        // Verify
+        mock.Expect("/assets.json");
         var grid = cut.FindComponent<ImageGrid>();
 
         Assert.NotNull(grid);
