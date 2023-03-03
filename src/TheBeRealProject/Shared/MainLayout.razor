@@ -1,10 +1,9 @@
 ﻿@inherits LayoutComponentBase
-@inject ThemeService ThemeService
 
 <div>
     <footer class="footer mt-auto py-3">
         <div class="container text-center">
-            <p cite="text-muted">© 2023 - <a class="text-body-secondary" href="https://github.com/aguacongas">Olivier Lefebvre</a> - <img class="github-mark" src="@GitHubMark" /> <a class="text-body-secondary" href="https://github.com/aguacongas/TheBeRealProject">source code</a></p>
+            <p cite="text-muted">© 2023 - <a class="text-body-secondary" href="https://github.com/aguacongas">Olivier Lefebvre</a> - <GitHubLogo></GitHubLogo> <a class="text-body-secondary" href="https://github.com/aguacongas/TheBeRealProject">source code</a></p>
         </div>
     </footer>
     <div class="container">
@@ -15,8 +14,3 @@
         </main>
     </div>
 </div>
-
-@code
-{
-    string GitHubMark => ThemeService.Theme == "dark" ? "github-mark-white.svg" : "github-mark.svg";
-}

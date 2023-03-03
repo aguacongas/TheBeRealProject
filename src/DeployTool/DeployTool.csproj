@@ -20,6 +20,7 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <UserSecretsId>d705e97d-590f-4f4f-b9c7-bc7581dd8013</UserSecretsId>
   </PropertyGroup>
 
 </Project>

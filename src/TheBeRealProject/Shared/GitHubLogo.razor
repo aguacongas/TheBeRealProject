@@ -1,0 +1,25 @@
+﻿@implements IDisposable
+@inject ThemeService ThemeService
+
+<img class="github-mark" src="@GitHubMark" />
+
+@code
+{
+    string GitHubMark => ThemeService.Theme == "dark" ? "github-mark-white.svg" : "github-mark.svg";
+
+    protected override void OnInitialized()
+    {
+        ThemeService.ThemeChanged += ThemeChanged;
+    }
+
+    public void Dispose()
+    {
+        ThemeService.ThemeChanged -= ThemeChanged;
+        GC.SuppressFinalize(this);
+    }
+
+    private void ThemeChanged(object sender, EventArgs eventArgs)
+    {
+        StateHasChanged();
+    }
+}

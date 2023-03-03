@@ -9,7 +9,7 @@
     <div class="m-3">
         <div class="row">
             <div class="col" @onmouseout="e => SelectedIndex = null">
-                <h1 class="text-uppercase h5">The <a href="https://bereal.com/">BeReal</a> Project</h1>
+                <h1 class="text-uppercase h5">The <a class="link-primary" href="https://bereal.com/">BeReal</a> Project</h1>
             </div>
             <div class="col-6">
                 <div class="d-flex">
@@ -17,11 +17,9 @@
                         <SelectedTitle Assets="@Assets" SelectedIndex="SelectedIndex"></SelectedTitle>
                     </div>
                     <div class="dropdown ms-auto">
-                        <buttong class="btn dropdown-toggle text-body-emphasis @Show" @onclick="ToggleShow">Theme</buttong>
-                        <ul class="dropdown-menu dropdown-menu @Show">
-                            <li><a class="dropdown-item" href="#" @onclick="SetDarkTheme">dark</a></li>
-                            <li><a class="dropdown-item" href="#" @onclick="SetLightTheme">light</a></li>
-                        </ul>
+                        <buttong class="btn btn-outline-secondary text-body-emphasis" @onclick="ToggleTheme">
+                            <span class="oi oi- @ThemeCss"></span>
+                        </buttong>
                     </div>
                 </div>
             </div>
@@ -46,6 +44,7 @@
     AssetItem[]? Assets { get; set; }
     int? SelectedIndex { get; set; }
     string? Show { get; set; }
+    string ThemeCss => ThemeService.Theme == "light" ? "oi-moon" : "oi-sun";
 
     bool UpdateSelectedIndexOnMouseOver = true;
     protected override async Task OnInitializedAsync() 
@@ -65,6 +64,8 @@
     void HandleClick(int index) 
     {
         UpdateSelectedIndexOnMouseOver = !UpdateSelectedIndexOnMouseOver;
+        SelectedIndex = index;
+        StateHasChanged();
     }
 
     void HandleOnMouseOut()
@@ -75,27 +76,14 @@
         }
     }
 
-    void ToggleShow()
+    async Task ToggleTheme()
     {
-        if (Show is null)
+        if (ThemeService.Theme == "dark")
         {
-            Show = "show";
+            await ThemeService.SetThemeAsync("light").ConfigureAwait(false);
+            return;
         }
-        else
-        {
-            Show = null;
-        }
-    }
 
-    async Task SetDarkTheme()
-    {
         await ThemeService.SetThemeAsync("dark").ConfigureAwait(false);
-        ToggleShow();
-    }
-
-    async Task SetLightTheme()
-    {
-        await ThemeService.SetThemeAsync("light").ConfigureAwait(false);
-        ToggleShow();
     }
 }

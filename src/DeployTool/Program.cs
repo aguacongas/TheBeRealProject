@@ -11,13 +11,20 @@ using System.Text.Json;
 using TheBeRealProject.Models;
 
 var builder = Host.CreateApplicationBuilder(args);
-var configuration = builder.Configuration;
+var configuration = builder.Configuration.AddUserSecrets<Program>().Build();
+
 var apiUrl = configuration.GetValue<string>("ApiUrl") ?? throw new InvalidOperationException("Api url is null");
 builder.Services.AddScoped(sp => {
     var client = new HttpClient {
         BaseAddress = new Uri(apiUrl),
     };
     client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("TheBeRealProject.DeployTool", "1.0.0"));
+
+    var apiToken = configuration.GetValue<string>("ApiToken");
+    if (apiToken is not null)
+    {
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiToken);
+    }
     return client;
 });
 
@@ -35,9 +42,8 @@ foreach(var file in Directory.GetFiles(assetDir))
 }
 
 var httpClient = app.Services.GetRequiredService<HttpClient>();
-var data = await httpClient.GetFromJsonAsync<GitHubItem[]>("contents/assets").ConfigureAwait(false) ?? throw new InvalidOperationException("data is null");
+var data = await httpClient.GetFromJsonAsync<GitHubItem[]>("/").ConfigureAwait(false) ?? throw new InvalidOperationException("data is null");
 
-var assetsPath = configuration.GetValue<string>("AssetsPath") ?? throw new InvalidOperationException("Api url is null");
 var assets = new Collection<AssetItem>();
 for (int i = 0; i < data.Length; i++) 
 {
@@ -59,11 +65,17 @@ for (int i = 0; i < data.Length; i++)
         Date = date,
         OriginalUrl = item.Url
     };
-    var path = Path.Combine(assetsPath, item.Name);
-    using var glimpse = ResizeImage(path, 400);
+    
+    using var gs = await httpClient.GetStreamAsync(item.DownloadUrl).ConfigureAwait(false);
+    using var ms = new MemoryStream();
+    await gs.CopyToAsync(ms).ConfigureAwait(false);
+    
+    ms.Position = 0;
+    using var glimpse = ResizeImage(ms, 400);
     glimpse.Save(Path.Combine(publishDir, asset.Path));
 
-    using var mini = ResizeImage(path, 20);
+    ms.Position = 0;
+    using var mini = ResizeImage(ms, 20);
     mini.Save(Path.Combine(publishDir, asset.MiniPath));
 
     assets.Add(asset);
@@ -72,9 +84,8 @@ for (int i = 0; i < data.Length; i++)
 
 using var stream = File.Create(Path.Combine(publishDir, "assets.json"));
 JsonSerializer.Serialize(stream, assets);
-static Image ResizeImage(string path, float size)
+static Image ResizeImage(Stream stream, float size)
 { 
-    using var stream = File.OpenRead(path);
     using var original = new Bitmap(stream);
 
     var scaleHeight = size / original.Height;

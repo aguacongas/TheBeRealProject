@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{59C5FBF3-2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheBeRealProjectTest", "test\TheBeRealProjectTest\TheBeRealProjectTest.csproj", "{17BF54D2-C507-41B8-B765-1BF95AF82B05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeployTool", "src\DeployTool\DeployTool.csproj", "{587EB76D-BA23-4A91-9B96-97B9D56629F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeployTool", "src\DeployTool\DeployTool.csproj", "{587EB76D-BA23-4A91-9B96-97B9D56629F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
