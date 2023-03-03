@@ -22,6 +22,8 @@ jobs:
         dotnet-version: 7.0.x
     - name: install dotnet-coverage
       run: dotnet tool install --global dotnet-coverage
+    - name: install dotnet-sonarscanner
+      run: dotnet tool install --global dotnet-sonarscanner 
     - name: Restore dependencies
       run: dotnet restore
     - name: set up sonarcloud
