@@ -136,6 +136,6 @@ img.github-mark {
 @media (min-width: 767px) {
     .selected-img img {
         width: auto;
-        max-height: 312px;
+        max-height: 300px;
     }
 }
