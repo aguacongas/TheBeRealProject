@@ -13,11 +13,8 @@ using TheBeRealProject.Models;
 var builder = Host.CreateApplicationBuilder(args);
 var configuration = builder.Configuration.AddUserSecrets<Program>().Build();
 
-var apiUrl = configuration.GetValue<string>("ApiUrl") ?? throw new InvalidOperationException("Api url is null");
 builder.Services.AddScoped(sp => {
-    var client = new HttpClient {
-        BaseAddress = new Uri(apiUrl),
-    };
+    var client = new HttpClient();
     client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("TheBeRealProject.DeployTool", "1.0.0"));
 
     var apiToken = configuration.GetValue<string>("ApiToken");
@@ -42,7 +39,8 @@ foreach(var file in Directory.GetFiles(assetDir))
 }
 
 var httpClient = app.Services.GetRequiredService<HttpClient>();
-var data = await httpClient.GetFromJsonAsync<GitHubItem[]>("/").ConfigureAwait(false) ?? throw new InvalidOperationException("data is null");
+var apiUrl = configuration.GetValue<string>("ApiUrl") ?? throw new InvalidOperationException("Api url is null");
+var data = await httpClient.GetFromJsonAsync<GitHubItem[]>(apiUrl).ConfigureAwait(false) ?? throw new InvalidOperationException("data is null");
 
 var assets = new Collection<AssetItem>();
 for (int i = 0; i < data.Length; i++) 

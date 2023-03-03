@@ -5,8 +5,8 @@ public class ThemeService
 {
     private readonly IJSRuntime _runtime;
 
-    public string Theme { get; private set; } = "light";
-    public event EventHandler ThemeChanged;
+    public string? Theme { get; private set; }
+    public event EventHandler? ThemeChanged;
 
     public ThemeService(IJSRuntime runtime)
     {
