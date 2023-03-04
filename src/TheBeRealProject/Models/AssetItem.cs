@@ -1,14 +1,14 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace TheBeRealProject.Models; 
-public class AssetItem 
+namespace TheBeRealProject.Models;
+public class AssetItem
 {
     public Guid Id { get; set; }
 
     [JsonIgnore]
     public string Path => $"assets/{Id}.jpeg";
 
-    [JsonIgnore] 
+    [JsonIgnore]
     public string MiniPath => $"assets/{Id}.mini.jpeg";
 
     public string? OriginalUrl { get; set; }

@@ -1,5 +1,4 @@
-﻿using Bunit;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using RichardSzalay.MockHttp;
 using System.Net;
 using System.Net.Http.Headers;
@@ -7,9 +6,9 @@ using System.Text.Json;
 
 namespace Bunit;
 
-public static class MockHttpClientBunitHelpers 
+public static class MockHttpClientBunitHelpers
 {
-    public static MockHttpMessageHandler AddMockHttpClient(this TestServiceProvider services) 
+    public static MockHttpMessageHandler AddMockHttpClient(this TestServiceProvider services)
     {
         var mockHttpHandler = new MockHttpMessageHandler();
         var httpClient = mockHttpHandler.ToHttpClient();
@@ -20,7 +19,7 @@ public static class MockHttpClientBunitHelpers
 
     public static MockedRequest RespondJson<T>(this MockedRequest request, T content)
     {
-        request.Respond(req => 
+        request.Respond(req =>
         {
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             response.Content = new StringContent(JsonSerializer.Serialize(content));
@@ -32,9 +31,9 @@ public static class MockHttpClientBunitHelpers
 
     public static MockedRequest RespondJson<T>(this MockedRequest request, Func<T> contentProvider)
     {
-        request.Respond(req => 
+        request.Respond(req =>
         {
-            var response = new HttpResponseMessage(HttpStatusCode.OK) 
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(JsonSerializer.Serialize(contentProvider()))
             };

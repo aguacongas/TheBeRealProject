@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace DeployTool.Models;
 
-public class GitHubItem 
+public class GitHubItem
 {
     public string? Name { get; set; }
     public string? Path { get; set; }
@@ -13,14 +13,14 @@ public class GitHubItem
 
     [JsonPropertyName("html_url")]
     public string? HtmlUrl { get; set; }
-    
+
     [JsonPropertyName("git_url")]
     public string? GitUrl { get; set; }
-    
+
     [JsonPropertyName("download_url")]
     public string? DownloadUrl { get; set; }
     public string? Type { get; set; }
-    
+
     [JsonPropertyName("_links")]
     public GitHubILink? Links { get; set; }
 }
