@@ -20,19 +20,24 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7.0.x
-    - name: install dotnet-coverage
+    - name: Setup Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'oracle'
+        java-version: '17'
+    - name: Setup dotnet-coverage
       run: dotnet tool install --global dotnet-coverage
-    - name: install dotnet-sonarscanner
+    - name: Setup dotnet-sonarscanner
       run: dotnet tool install --global dotnet-sonarscanner 
     - name: Restore dependencies
       run: dotnet restore
-    - name: set up sonarcloud
+    - name: Start sonarscanner
       run: dotnet sonarscanner begin /k:"aguacongas_TheBeRealProject" /o:aguacongas /d:sonar.host.url=https://sonarcloud.io /d:sonar.login="${{ secrets.SONAR_SECRET }}" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet-coverage collect "dotnet test --no-build --verbosity normal" -f xml -o "coverage.xml"
-    - name: end sonarcloud
+      run: dotnet coverage collect "dotnet test --no-build --verbosity normal" -f xml -o "coverage.xml"
+    - name: Stop sonarscanner
       run: dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_SECRET }}"
 
 
