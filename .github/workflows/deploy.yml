@@ -37,7 +37,7 @@ jobs:
         with:
           dotnet-version: 7.0.200
       - name: Publish assets
-        run: dotnet run -c Release --ApiToken ${{ secrets.ASSETS_TOKEN }} --ApiUrl {{ vars.API_URL }}
+        run: dotnet run -c Release --ApiToken ${{ secrets.ASSETS_TOKEN }} --ApiUrl ${{ vars.API_URL }}
         working-directory: src/DeployTool
       - name: Publish app
         run: dotnet publish src/TheBeRealProject/TheBeRealProject.csproj -c Release
