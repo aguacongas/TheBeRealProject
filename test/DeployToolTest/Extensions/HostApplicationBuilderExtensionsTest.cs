@@ -1,5 +1,6 @@
 ﻿using DeployTool.Abstraction;
 using DeployTool.Services;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace DeployToolTest.Extensions;
@@ -8,12 +9,13 @@ public class HostApplicationBuilderExtensionsTest
     [Fact]
     public void AddDeployTool_should_setup_di_fro_deploy_tool()
     {
-        var builder = Host.CreateApplicationBuilder()
-            .AddDeployTool();
+        var provider = Host.CreateApplicationBuilder()
+            .AddDeployTool()
+            .Build()
+            .Services;
 
-        var services = builder.Services;
-        Assert.Contains(services, s => s.ServiceType == typeof(IImageService));
-        Assert.Contains(services, s => s.ServiceType == typeof(IGitHubFileService));
-        Assert.Contains(services, s => s.ServiceType == typeof(AssetService));
+        Assert.NotNull(provider.GetService<IGitHubFileService>());
+        Assert.NotNull(provider.GetService<IImageService>());
+        Assert.NotNull(provider.GetService<AssetService>());
     }
 }
