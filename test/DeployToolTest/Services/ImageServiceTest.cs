@@ -62,9 +62,9 @@ public class ImageServiceTest
         {
             Id = Guid.NewGuid()
         };
-        sut.SaveGlimpse(ms, asset);
+        sut.SaveMini(ms, asset);
 
-        var path = Path.Combine(dir, asset.Path);
+        var path = Path.Combine(dir, asset.MiniPath);
         Assert.True(File.Exists(path));
         using var bitmap = new Bitmap(path);
         Assert.Equal(20, bitmap.Width);

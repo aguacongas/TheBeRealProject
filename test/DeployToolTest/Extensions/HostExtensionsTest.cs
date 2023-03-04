@@ -21,7 +21,8 @@ public class HostExtensionsTest
         var gitHubFileServiceMock = new Mock<IGitHubFileService>();
         gitHubFileServiceMock.Setup(m => m.GetItemsAsync()).ReturnsAsync(Array.Empty<GitHubItem>());
         var imageServiceMock = new Mock<IImageService>();
-        imageServiceMock.SetupGet(m => m.PublishDir).Returns(Path.GetTempPath());
+        var path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+        imageServiceMock.SetupGet(m => m.PublishDir).Returns(path);
 
         var builder = Host.CreateApplicationBuilder();
         builder.Services.AddTransient(p => gitHubFileServiceMock.Object)
@@ -30,7 +31,7 @@ public class HostExtensionsTest
 
         await builder.Build().UseDeployToolAsync().ConfigureAwait(false);
 
-        var assets = JsonSerializer.Deserialize<AssetItem[]>(File.ReadAllText(Path.Combine(Path.GetTempPath(), "assets.json")));
+        var assets = JsonSerializer.Deserialize<AssetItem[]>(File.ReadAllText(Path.Combine(path, "assets.json")));
 
         Assert.NotNull(assets);
         Assert.Empty(assets);
