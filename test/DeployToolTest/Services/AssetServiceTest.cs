@@ -43,13 +43,14 @@ public class AssetServiceTest
         });
 
         var imageServiceMock = new Mock<IImageService>();
-        imageServiceMock.SetupGet(m => m.PublishDir).Returns(Path.GetTempPath());
+        var path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+        imageServiceMock.SetupGet(m => m.PublishDir).Returns(path);
 
         var sut = new AssetService(gitHubFileServiceMock.Object, imageServiceMock.Object);
 
         await sut.GetAssetsAsync().ConfigureAwait(false);
 
-        var assets = JsonSerializer.Deserialize<AssetItem[]>(File.ReadAllText(Path.Combine(Path.GetTempPath(), "assets.json")));
+        var assets = JsonSerializer.Deserialize<AssetItem[]>(File.ReadAllText(Path.Combine(path, "assets.json")));
 
         Assert.NotNull(assets);
         Assert.Single(assets);
