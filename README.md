@@ -2,6 +2,8 @@
 
 Blazor WASM app to display 1 years of [BeReal](https://bereal.com/) photos
 
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=aguacongas_TheBeRealProject)](https://sonarcloud.io/summary/new_code?id=aguacongas_TheBeRealProject)
+
 [![.NET build](https://github.com/aguacongas/TheBeRealProject/actions/workflows/dotnet.yml/badge.svg)](https://github.com/aguacongas/TheBeRealProject/actions/workflows/dotnet.yml) [![Deploy to Pages](https://github.com/aguacongas/TheBeRealProject/actions/workflows/deploy.yml/badge.svg)](https://github.com/aguacongas/TheBeRealProject/actions/workflows/deploy.yml)
 
 [Visit the result](https://aguacongas.github.io/TheBeRealProject/)
