@@ -122,16 +122,14 @@ img.github-mark {
     width: 20px;
 }
 
-@media (max-width: 767px) {
-    .selected-img {
-        text-align: center;
-    }
+div.position-absolute {
+    width: 100%;
+}
 
-    .selected-img img {
+    div.position-absolute .selected-img img {
         width: 100%;
         height: auto;
     }
-}
 
 @media (min-width: 767px) {
     .selected-img img {
