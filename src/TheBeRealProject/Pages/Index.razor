@@ -16,7 +16,7 @@
                     <div class="ms-2 mt-2 d-none d-md-block">
                         <SelectedTitle Assets="@Assets" SelectedIndex="SelectedIndex"></SelectedTitle>
                     </div>
-                    <div class="dropdown ms-auto">
+                    <div class="ms-auto">
                         <buttong class="btn btn-outline-secondary text-body-emphasis" @onclick="ToggleTheme">
                             <span class="oi oi- @ThemeCss"></span>
                         </buttong>
@@ -38,7 +38,7 @@
                 }
                 <ImageGrid Assets="@Assets" OnMouseOver="HandleMouseOver" OnClick="HandleClick"></ImageGrid>
             </div>
-            <div class="col-md">
+            <div class="col-md d-none d-md-block">
                 <div class="d-md-none">
                     <SelectedTitle Assets="@Assets" SelectedIndex="SelectedIndex"></SelectedTitle>
                 </div>
@@ -47,6 +47,16 @@
         </div>
     </div>
 </div>
+@if (SelectedIndex is not null)
+{
+<div class="position-absolute top-0 start-0 d-md-none bg-body" @onclick="HandleImageClick" @onclick:stopPropagation="true">
+    <div>
+        <SelectedTitle Assets="@Assets" SelectedIndex="SelectedIndex"></SelectedTitle>
+    </div>
+    <SelectedImage Assets="@Assets" SelectedIndex="SelectedIndex"></SelectedImage>
+</div>    
+}
+
 @code
 {
     AssetItem[]? Assets { get; set; }
@@ -82,6 +92,11 @@
         {
             SelectedIndex = null;
         }
+    }
+
+    void HandleImageClick()
+    {
+        SelectedIndex = null;
     }
 
     async Task ToggleTheme()
