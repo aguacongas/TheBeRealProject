@@ -49,11 +49,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.0-preview.2.23153.2" />
-        <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0-preview.2.23128.3" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0-preview.2.23128.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
         <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.25314-preview" />
-        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.27.0" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
     </ItemGroup>
 
 </Project>
