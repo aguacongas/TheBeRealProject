@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization;
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+@using Microsoft.Extensions.Options;
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject IOptionsSnapshot<RemoteAuthenticationOptions<ApiAuthorizationProviderOptions>> Options
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var authenticationState = await AuthenticationStateProvider.GetAuthenticationStateAsync().ConfigureAwait(false);
+        var identity = authenticationState.User?.Identity;
+        if (identity != null && !identity.IsAuthenticated)
+        {
+            NavigationManager.NavigateTo("https://github.com/login/oauth/authorize?scope=user:email&client_id=4fbba8cccce03aef50c5");
+        return;
+        }
+
+        await base.OnInitializedAsync();
+    }
+
+}

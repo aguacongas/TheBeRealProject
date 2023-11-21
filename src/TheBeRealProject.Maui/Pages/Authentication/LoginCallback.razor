@@ -1,0 +1,19 @@
+﻿@page "/authentication/login-callback"
+@using TheBeRealProject.Services;
+@inject OAuthAuthenticationStateProvider OAuthAuthenticationStateProvider
+
+@code {
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "code")]
+    public string? Code { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync().ConfigureAwait(false);
+        if (string.IsNullOrEmpty(Code))
+        {
+            return;
+        }
+        await OAuthAuthenticationStateProvider.SetAuthenticationStateASync(Code).ConfigureAwait(false);
+    }
+}
