@@ -22,7 +22,7 @@ public class AssetServiceTest
 
         var sut = new AssetService(gitHubFileServiceMock.Object, imageServiceMock.Object);
 
-        await sut.GetAssetsAsync()
+        await sut.GetAssetsAsync();
 
         var assets = JsonSerializer.Deserialize<AssetItem[]>(File.ReadAllText(Path.Combine(path, "assets.json")));
 
@@ -48,7 +48,7 @@ public class AssetServiceTest
 
         var sut = new AssetService(gitHubFileServiceMock.Object, imageServiceMock.Object);
 
-        await sut.GetAssetsAsync()
+        await sut.GetAssetsAsync();
 
         var assets = JsonSerializer.Deserialize<AssetItem[]>(File.ReadAllText(Path.Combine(path, "assets.json")));
 
