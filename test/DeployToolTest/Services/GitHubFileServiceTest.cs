@@ -17,7 +17,7 @@ public class GitHubFileServiceTest
         var httpClient = mockHttpHandler.ToHttpClient();
         var sut = new GitHubFileService(httpClient, apiUrl);
 
-        var result = await sut.GetItemsAsync().ConfigureAwait(false);
+        var result = await sut.GetItemsAsync()
 
         mockHttpHandler.Expect(apiUrl);
         Assert.NotNull(result);
@@ -40,7 +40,7 @@ public class GitHubFileServiceTest
         var httpClient = mockHttpHandler.ToHttpClient();
         var sut = new GitHubFileService(httpClient, "http://localhost/contents/");
 
-        var result = await sut.GetFileStreamAsync(item).ConfigureAwait(false);
+        var result = await sut.GetFileStreamAsync(item)
 
         mockHttpHandler.Expect(item.DownloadUrl);
         Assert.NotNull(result);
