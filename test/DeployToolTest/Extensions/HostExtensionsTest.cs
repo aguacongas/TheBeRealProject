@@ -29,7 +29,7 @@ public class HostExtensionsTest
             .AddTransient(p => imageServiceMock.Object)
             .AddTransient<AssetService>();
 
-        await builder.Build().UseDeployToolAsync().ConfigureAwait(false);
+        await builder.Build().UseDeployToolAsync();
 
         var assets = JsonSerializer.Deserialize<AssetItem[]>(File.ReadAllText(Path.Combine(path, "assets.json")));
 
