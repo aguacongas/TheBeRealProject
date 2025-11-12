@@ -47,6 +47,7 @@ if (Test-Path env:SRC_BRANCH) {
 Write-Host "src:$src dest: $dest"
 
 # Restore dependencies
+dotnet workload restore
 dotnet restore
 
 # Get all project list in the solution
