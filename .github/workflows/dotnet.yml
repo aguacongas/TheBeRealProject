@@ -29,6 +29,8 @@ jobs:
       run: dotnet tool install --global dotnet-coverage
     - name: Setup dotnet-sonarscanner
       run: dotnet tool install --global dotnet-sonarscanner 
+    - name: Restore workload
+      run: dotnet workload restore
     - name: Restore dependencies
       run: dotnet restore
     - name: Start sonarscanner
