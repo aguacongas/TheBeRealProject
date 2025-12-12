@@ -33,6 +33,8 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 10.0.x
+      - name: Restore workload
+        run: dotnet workload restore
       # Run update depencies script
       - name: Bump dependencies
         run: ./bump-dependencies.ps1
