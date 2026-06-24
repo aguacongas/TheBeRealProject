@@ -40,6 +40,6 @@ jobs:
     - name: Test
       run: dotnet coverage collect "dotnet test --no-build --verbosity normal" -f xml -o "coverage.xml"
     - name: Stop sonarscanner
-      run: dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_SECRET }}"
+      run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_SECRET }}"
 
 
