@@ -34,16 +34,12 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Start sonarscanner
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_SECRET }}
-      run: dotnet sonarscanner begin /k:"aguacongas_TheBeRealProject" /o:"aguacongas" /d:sonar.host.url=https://sonarcloud.io /d:sonar.token="$env.SONAR_TOKEN" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+      run: dotnet sonarscanner begin /k:"aguacongas_TheBeRealProject" /o:"aguacongas" /d:sonar.host.url=https://sonarcloud.io /d:sonar.token="${{ secrets.SONAR_SECRET }}" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
     - name: Build
       run: dotnet build --no-restore
     - name: Test
       run: dotnet coverage collect "dotnet test --no-build --verbosity normal" -f xml -o "coverage.xml"
     - name: Stop sonarscanner
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_SECRET }}
-      run: dotnet sonarscanner end /d:sonar.login="$env.SONAR_TOKEN"
+      run: dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_SECRET }}"
 
 
